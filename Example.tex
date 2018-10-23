@@ -1,0 +1,227 @@
+% Content of Example is NOT author's original work.
+
+% === Document Header === %
+\documentclass{StdTemplate}
+
+% Base Document Attributes
+\title{Document Title}
+\author{John Doe}
+\date{\today}
+
+% Customization of Document Header
+\HeaderLeft{ECE 5341} % Left Justified Portion of Document Header
+\HeaderRight{\theauthor} % Right Justified Portion of Document Header
+\HeaderRight{\thedate} % Right Justified Portion of Document Header
+\UpdateHeaddings % Populates header with the contents of \HeaderLeft and \HeaderRight
+
+\begin{document}
+\TitlePage
+% === Document Body === %
+\text{This is the text command.}
+
+\begin{abstract}
+    This is the document abstract. % === Document Header === %
+\documentclass{StdTemplate}
+
+% Base Document Attributes
+\title{Document Title}
+\author{John Doe}
+\date{\today}
+
+% Customization of Document Header
+\HeaderLeft{ECE 5341} % Left Justified Portion of Document Header
+\HeaderRight{\theauthor} % Right Justified Portion of Document Header
+\HeaderRight{\thedate} % Right Justified Portion of Document Header
+\UpdateHeaddings % Populates header with the contents of \HeaderLeft and \HeaderRight
+
+\begin{document}
+\TitlePage
+% === Document Body === %
+\text{This is the text command.}
+
+\begin{abstract}
+    This is the document abstract. The pack­age adds an op­tional ar­gu­ment to the enu­mer­ate en­vi­ron­ment which de­ter­mines the style in which the counter is printed. The en­u­mitem pack­age su­per­sedes—it pro­vides the same fa­cil­i­ties in a well-struc­tured way.
+\end{abstract}
+
+\begin{lstlisting}[language=Python, caption=Now It's Captioned, label=label1]
+print("Hello World")
+\end{lstlisting}
+
+\begin{align}
+f(x) &= a x^2 + b x + c\label{eq1}\\
+g(x) &= a^\prime (x - x_0)^2 + c^\prime \text{ This is plain-text}\label{eq2}
+\end{align}
+
+When I want to reference the second equation one can call it as \ref{eq2}, and reference equation one as \ref{eq1}.
+
+\begin{align*}
+f(x) &= a x^2 + b x + c\\
+g(x) &= a^\prime (x - x_0)^2 + c^\prime \text{ This is plain-text}
+\end{align*}
+
+
+\section{Section 1}
+
+\begin{enumerate}
+\item 1st level
+    \begin{enumerate}
+    \item 2nd level
+        \begin{enumerate}
+        \item 3rd level
+            \begin{enumerate}
+            \item 4th level
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\begin{table}[h]
+\begin{tabular}{c|c }
+A & B \\
+C & D 
+\end{tabular}
+\caption{This is a table}
+\end{table}
+
+\section{Section 2}
+
+\begin{enumerate}
+\item 1st level
+    \begin{enumerate}
+    \item 2nd level
+        \begin{enumerate}
+        \item 3rd level
+            \begin{enumerate}
+            \item 4th level
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[resume]
+\item 1st level
+    \begin{enumerate}
+    \item 2nd level
+        \begin{enumerate}
+        \item 3rd level
+            \begin{enumerate}
+            \item 4th level
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\begin{algorithm}[H]
+\caption{How to write algorithms}
+ \KwData{this text}
+ \KwResult{how to write algorithm with \LaTeX2e }
+ initialization\;
+ \While{not at end of this document}{
+  read current\;
+  \eIf{understand}{
+   go to next section\;
+   current section becomes this one\;
+   }{
+   go back to the beginning of current section\;
+  }
+ }
+ 
+\end{algorithm}
+%\begin{lstlisting}[language=SQL]%
+%SELECT retards FROM moba_games WHERE griefing > 100 AND ban IS true%
+%\end{lstlisting}%
+
+
+\end{document}
+\end{abstract}
+
+\begin{lstlisting}[language=Python, caption=Now It's Captioned, label=label1]
+print("Hello World")
+\end{lstlisting}
+
+\begin{align}
+f(x) &= a x^2 + b x + c\label{eq1}\\
+g(x) &= a^\prime (x - x_0)^2 + c^\prime \text{ This is plain-text}\label{eq2}
+\end{align}
+
+When I want to reference the second equation one can call it as \ref{eq2}, and reference equation one as \ref{eq1}.
+
+\begin{align*}
+f(x) &= a x^2 + b x + c\\
+g(x) &= a^\prime (x - x_0)^2 + c^\prime \text{ This is plain-text}
+\end{align*}
+
+
+\section{Section 1}
+
+\begin{enumerate}
+\item 1st level
+    \begin{enumerate}
+    \item 2nd level
+        \begin{enumerate}
+        \item 3rd level
+            \begin{enumerate}
+            \item 4th level
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\begin{table}[h]
+\begin{tabular}{c|c }
+A & B \\
+C & D 
+\end{tabular}
+\caption{This is a table}
+\end{table}
+
+\section{Section 2}
+
+\begin{enumerate}
+\item 1st level
+    \begin{enumerate}
+    \item 2nd level
+        \begin{enumerate}
+        \item 3rd level
+            \begin{enumerate}
+            \item 4th level
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[resume]
+\item 1st level
+    \begin{enumerate}
+    \item 2nd level
+        \begin{enumerate}
+        \item 3rd level
+            \begin{enumerate}
+            \item 4th level
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\begin{algorithm}[H]
+\caption{How to write algorithms}
+ \KwData{this text}
+ \KwResult{how to write algorithm with \LaTeX2e }
+ initialization\;
+ \While{not at end of this document}{
+  read current\;
+  \eIf{understand}{
+   go to next section\;
+   current section becomes this one\;
+   }{
+   go back to the beginning of current section\;
+  }
+ }
+ 
+\end{algorithm}
+%\begin{lstlisting}[language=SQL]%
+%SELECT retards FROM moba_games WHERE griefing > 100 AND ban IS true%
+%\end{lstlisting}%
+
+
+\end{document}
