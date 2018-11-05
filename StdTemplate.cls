@@ -14,10 +14,6 @@
 % Derived from "article" class
 \LoadClass[12pt]{article}
 
-% Tilde Character
-% https://tex.stackexchange.com/questions/9363/how-does-one-insert-a-backslash-or-a-tilde-into-latex
-\newcommand{\myTilde}{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}
-
 % Page Encoding
 \RequirePackage[utf8]{inputenc}
 
@@ -29,7 +25,7 @@
 	\geometry{margin=1in}
 
 % [Graphics]
-\RequirePackage[svgnames,table]{xcolor}
+\RequirePackage[svgnames,table,hyperref]{xcolor}
 \RequirePackage{graphicx} % Graphics Support
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \RequirePackage{tikz} % Kitchen Sink
@@ -47,9 +43,8 @@
 \RequirePackage{enumitem}
 %	\setenumerate[1]{label=\thesection.\arabic*.} % Make First Line of Enumeration the Section
 	\setenumerate{label*=\arabic*.}
-
+	
 %% [Algorithms]
-\RequirePackage{algorithmic} % https://en.wikibooks.org/wiki/LaTeX/Algorithms
 \RequirePackage{algorithm2e} % This is the nice one to work with
 	
 % [Bibliography]
@@ -85,88 +80,7 @@
 \RequirePackage[cmex10]{amsmath} % AMS Math, IEEE Xplore Compliance
 \RequirePackage{amssymb} % AMS Symbols, IEEE Xplore Compliance
 
-%% ==== Bulk Customization ====
-% Patch line number key to call line background macro
-\lst@Key{numbers}{none}{%
-    \def\lst@PlaceNumber{\lst@linebgrd}%
-    \lstKV@SwitchCases{#1}%
-    {none&\\%
-     left&\def\lst@PlaceNumber{\llap{\normalfont
-                \lst@numberstyle{\thelstnumber}\kern\lst@numbersep}\lst@linebgrd}\\%
-     right&\def\lst@PlaceNumber{\rlap{\normalfont
-                \kern\linewidth \kern\lst@numbersep
-                \lst@numberstyle{\thelstnumber}}\lst@linebgrd}%
-    }{\PackageError{Listings}{Numbers #1 unknown}\@ehc}}
-
-% New keys
-\lst@Key{linebackgroundcolor}{}{%
-    \def\lst@linebgrdcolor{#1}%
-}
-\lst@Key{linebackgroundsep}{0pt}{%
-    \def\lst@linebgrdsep{#1}%
-}
-\lst@Key{linebackgroundwidth}{\linewidth}{%
-    \def\lst@linebgrdwidth{#1}%
-}
-\lst@Key{linebackgroundheight}{\ht\strutbox}{%
-    \def\lst@linebgrdheight{#1}%
-}
-\lst@Key{linebackgrounddepth}{\dp\strutbox}{%
-    \def\lst@linebgrddepth{#1}%
-}
-\lst@Key{linebackgroundcmd}{\color@block}{%
-    \def\lst@linebgrdcmd{#1}%
-}
-
-% Line Background macro
-\newcommand{\lst@linebgrd}{%
-    \ifx\lst@linebgrdcolor\empty\else
-    \rlap{%
-        \lst@basicstyle
-        \color{-.}% By default use the opposite (`-`) of the current color (`.`) as background
-        \lst@linebgrdcolor{%
-        \kern-\dimexpr\lst@linebgrdsep\relax%
-        \lst@linebgrdcmd{\lst@linebgrdwidth}{\lst@linebgrdheight}{\lst@linebgrddepth}%
-        }%
-    }%
-    \fi
-}
-
-% Listings Style
-	% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
-	\lstset{
-		% Escape Sequences
-		escapeinside={\%*}{*)}, % Embedded LaTeX
-		%
-		% Breaks / Pagination
-		breaklines=true, % Break Long Lines
-		breakatwhitespace=false, % Break anywhere
-		keepspaces=true,
-		columns=flexible,
-		xleftmargin=0.5cm, % Left Margin
-		xrightmargin=0.5cm, % Right Margin
-		%
-		% Frame
-		frame=tb,
-		framesep=1pt,		
-		%
-		% Numbers
-		numbers=left,
-		numberfirstline=true,
-		stepnumber=1,
-		numbersep=4pt,
-		%
-		% Typefacing / Colors
-		basicstyle=\ttfamily\footnotesize, % Font Size
-		    % https://en.wikibooks.org/wiki/LaTeX/Fonts#Built-in_sizes
-		commentstyle=\color{ForestGreen},
-		keywordstyle=\color{NavyBlue},
-		stringstyle=\color{FireBrick}, % string literal style
-		linebackgroundcolor={\ifodd\value{lstnumber}\color{gray!20}\fi},
-		showstringspaces=false % Disable String Spaces being Shown
-	}
-
-%% Methods
+% [Titleing]
 \RequirePackage{titling}
 % https://tex.stackexchange.com/questions/27710/how-can-i-use-author-date-and-title-after-maketitle
 \RequirePackage{titlesec}
@@ -174,6 +88,62 @@
 	\titleformat*{\subsection}{\normalsize\bfseries}
 	\titleformat*{\subsubsection}{\normalsize\itshape}
 
+%% ==== Bulk Customization ====
+
+% https://tex.stackexchange.com/questions/451532/recent-issues-with-lstlinebgrd-package-with-listings-after-the-latters-updates
+\let\old@lstKV@SwitchCases\lstKV@SwitchCases
+\def\lstKV@SwitchCases#1#2#3{}
+\makeatother
+\usepackage{lstlinebgrd}
+\makeatletter
+\let\lstKV@SwitchCases\old@lstKV@SwitchCases
+
+\lst@Key{numbers}{none}{%
+    \def\lst@PlaceNumber{\lst@linebgrd}%
+    \lstKV@SwitchCases{#1}%
+    {none:\\%
+     left:\def\lst@PlaceNumber{\llap{\normalfont
+                \lst@numberstyle{\thelstnumber}\kern\lst@numbersep}\lst@linebgrd}\\%
+     right:\def\lst@PlaceNumber{\rlap{\normalfont
+                \kern\linewidth \kern\lst@numbersep
+                \lst@numberstyle{\thelstnumber}}\lst@linebgrd}%
+    }{\PackageError{Listings}{Numbers #1 unknown}\@ehc}}
+
+% Listings Style
+% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+\lstset{
+	% Escape Sequences
+	escapeinside={\%*}{*)}, % Embedded LaTeX
+	%
+	% Breaks / Pagination
+	breaklines=true, % Break Long Lines
+	breakatwhitespace=false, % Break anywhere
+	keepspaces=true,
+	columns=flexible,
+	xleftmargin=0.5cm, % Left Margin
+	xrightmargin=0.5cm, % Right Margin
+	%
+	% Frame
+	frame=tb,
+	framesep=1pt,		
+	%
+	% Numbers
+	numbers=left,
+	numberfirstline=true,
+	stepnumber=1,
+	numbersep=4pt,
+	%
+	% Typefacing / Colors
+	basicstyle=\ttfamily\footnotesize, % Font Size
+		% https://en.wikibooks.org/wiki/LaTeX/Fonts#Built-in_sizes
+	commentstyle=\color{ForestGreen},
+	keywordstyle=\color{NavyBlue},
+	stringstyle=\color{FireBrick}, % string literal style
+	linebackgroundcolor={\ifodd\value{lstnumber}\color{gray!20}\fi},
+	showstringspaces=false, % Disable String Spaces being Shown
+}
+
+%% Methods
 % https://en.wikibooks.org/wiki/LaTeX/Macros
 % Update Page Layout Using Fancyhdr
 \newcommand{\UpdateHeaddings}{
