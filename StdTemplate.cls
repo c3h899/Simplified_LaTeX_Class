@@ -49,7 +49,6 @@
 	\setenumerate{label*=\arabic*.}
 
 %% [Algorithms]
-\RequirePackage{algorithmic} % https://en.wikibooks.org/wiki/LaTeX/Algorithms
 \RequirePackage{algorithm2e} % This is the nice one to work with
 	
 % [Bibliography]
