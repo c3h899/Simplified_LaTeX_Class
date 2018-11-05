@@ -43,7 +43,7 @@
 \RequirePackage{enumitem}
 %	\setenumerate[1]{label=\thesection.\arabic*.} % Make First Line of Enumeration the Section
 	\setenumerate{label*=\arabic*.}
-	
+
 %% [Algorithms]
 \RequirePackage{algorithm2e} % This is the nice one to work with
 	
@@ -140,7 +140,7 @@
 	keywordstyle=\color{NavyBlue},
 	stringstyle=\color{FireBrick}, % string literal style
 	linebackgroundcolor={\ifodd\value{lstnumber}\color{gray!20}\fi},
-	showstringspaces=false, % Disable String Spaces being Shown
+	showstringspaces=false % Disable String Spaces being Shown
 }
 
 %% Methods
