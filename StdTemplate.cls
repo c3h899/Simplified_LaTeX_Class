@@ -91,6 +91,7 @@
 	\titleformat*{\section}{\large\bfseries}
 	\titleformat*{\subsection}{\normalsize\bfseries}
 	\titleformat*{\subsubsection}{\normalsize\itshape}
+
 %% ==== Bulk Customization ====
 % Patch line number key to call line background macro
 \lst@Key{numbers}{none}{%
@@ -103,6 +104,40 @@
                 \kern\linewidth \kern\lst@numbersep
                 \lst@numberstyle{\thelstnumber}}\lst@linebgrd}%
     }{\PackageError{Listings}{Numbers #1 unknown}\@ehc}}
+
+% New keys
+\lst@Key{linebackgroundcolor}{}{%
+    \def\lst@linebgrdcolor{#1}%
+}
+\lst@Key{linebackgroundsep}{0pt}{%
+    \def\lst@linebgrdsep{#1}%
+}
+\lst@Key{linebackgroundwidth}{\linewidth}{%
+    \def\lst@linebgrdwidth{#1}%
+}
+\lst@Key{linebackgroundheight}{\ht\strutbox}{%
+    \def\lst@linebgrdheight{#1}%
+}
+\lst@Key{linebackgrounddepth}{\dp\strutbox}{%
+    \def\lst@linebgrddepth{#1}%
+}
+\lst@Key{linebackgroundcmd}{\color@block}{%
+    \def\lst@linebgrdcmd{#1}%
+}
+
+% Line Background macro
+\newcommand{\lst@linebgrd}{%
+    \ifx\lst@linebgrdcolor\empty\else
+    \rlap{%
+        \lst@basicstyle
+        \color{-.}% By default use the opposite (`-`) of the current color (`.`) as background
+        \lst@linebgrdcolor{%
+        \kern-\dimexpr\lst@linebgrdsep\relax%
+        \lst@linebgrdcmd{\lst@linebgrdwidth}{\lst@linebgrdheight}{\lst@linebgrddepth}%
+        }%
+    }%
+    \fi
+}
 
 % Listings Style
 % https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
