@@ -24,6 +24,9 @@
 	\geometry{letterpaper}
 	\geometry{margin=1in}
 
+% [Indentation]
+\RequirePackage{indentfirst}
+
 % [Graphics]
 \RequirePackage[svgnames,table,hyperref]{xcolor}
 \RequirePackage{graphicx} % Graphics Support
@@ -79,6 +82,45 @@
 \RequirePackage{array}
 \RequirePackage[cmex10]{amsmath} % AMS Math, IEEE Xplore Compliance
 \RequirePackage{amssymb} % AMS Symbols, IEEE Xplore Compliance
+
+% [SI Numbers and Units]
+\RequirePackage{siunitx}
+%	locale = US, % US, UK, DE, FR, ZA Currently Supported
+%	scientific-notation = true, % Defaults Numbers to Scientific Notation
+%	output-complex-root = \ensuremath{\mathrm{i}}, % Conveneint to Set to j
+%	group-separation = {,}, % Digit Grouping in Sets of Three delineated by comma
+%	
+%	output-product = {\cdot}, % Product of successive numbers is delineated by a dot
+%	product-units =  brackets-power % May be unpopular choice, consider using repeat
+%
+\sisetup{
+	locale = US, % US, UK, DE, FR, ZA Currently Supported
+	add-decimal-zero = true, % Default
+	retain-unity-mantissa = false, % Not explicitly documented in sisetup
+%	scientific-notation = true, % Defaults Numbers to Scientific Notation
+%	scientific-notation = engineering, % Defaults Numbers to Engineering Notation
+%	output-complex-root = \ensuremath{\mathrm{j}}, % Conveneint to Set to j
+%	output-exponent-marker = {\ensuremath{\mathrm{E}}},
+	exponent-product = {\times},
+	separate-uncertainty = true,
+	product-units =  brackets-power, % May be unpopular, consider using repeat
+	list-units = brackets, % May be unpopular, consider using repeat
+	range-units = brackets, % May be unpopular, consider using repeat
+	inter-unit-product = {\ensuremath{{}\cdot{}}},
+	exponent-to-prefix, % MAGIC
+}
+
+%
+%\DeclareSIUnit\Molar{\textsc{m}}
+%\DeclareSIUnit\nF{\nano\farad}
+%\DeclareSIUnit\uF{\micro\farad}
+%\DeclareSIUnit\mF{\milli\farad}
+%\DeclareSIUnit\fH{\femto\henry}
+%\DeclareSIUnit\pH{\pico\henry}
+%\DeclareSIUnit\nH{\nano\henry}
+%\DeclareSIUnit\uH{\micro\henry}
+%\DeclareSIUnit\mH{\milli\henry}
+
 
 % [Titleing]
 \RequirePackage{titling}
