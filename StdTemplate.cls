@@ -9,13 +9,14 @@
 \ProvidesClass{StdTemplate}
 
 % Dependencies
-\NeedsTeXFormat{LaTeX2e}
+%\NeedsTeXFormat{LaTeX2e}
 
 % Derived from "article" class
 \LoadClass[12pt]{article}
 
 % Page Encoding
 \RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
 
 %% Required Packages
 
@@ -30,9 +31,24 @@
 % [Graphics]
 \RequirePackage[svgnames,table,hyperref]{xcolor}
 \RequirePackage{graphicx} % Graphics Support
-\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\RequirePackage{epstopdf}
+\DeclareGraphicsExtensions{.eps,.pdf,.jpeg,.png}
 \RequirePackage{tikz} % Kitchen Sink
 \RequirePackage{pdfpages} % Appendicies
+\RequirePackage{oplotsymbl} % Provides Plotting Symbols
+
+% Map Unicode Representation of Origin Plotting Symbols
+\DeclareUnicodeCharacter{2014}{\dash}
+\DeclareUnicodeCharacter{25B2}{\trianglepafill}
+\DeclareUnicodeCharacter{25BC}{\trianglepbfill}
+\DeclareUnicodeCharacter{25C4}{\triangleplfill}
+\DeclareUnicodeCharacter{25BA}{\triangleprfill}
+\DeclareUnicodeCharacter{25A0}{\squadfill}
+\DeclareUnicodeCharacter{25C6}{\rhombusfill}
+\DeclareUnicodeCharacter{2B1F}{\pentagofill}
+\DeclareUnicodeCharacter{2B22}{\hexagofill}
+\DeclareUnicodeCharacter{2605}{\starletfill}
+\DeclareUnicodeCharacter{25CF}{\circletfill}
 
 % [Floats and Tables]
 \RequirePackage{booktabs} % Improves Tables
@@ -66,6 +82,18 @@
 	\renewcommand{\headrulewidth}{1pt} % customise the layout...
 	\fancyhf{}
 
+	% External Left Header
+	\fancyhead[L]{}
+	
+	% External Right Header
+	\fancyhead[R]{}
+	
+	% Page Number
+	\fancyhead[C]{-\ \thepage\ -}
+
+	% Blank Footer
+	\fancyfoot[L,C,R]{}
+	
 % [Hyperlinks]
 \RequirePackage[colorlinks = true, % Change to false is color hyperlinks are un-desired.
 	linkcolor = blue,
@@ -110,17 +138,16 @@
 	exponent-to-prefix, % MAGIC
 }
 
-%
-%\DeclareSIUnit\Molar{\textsc{m}}
-%\DeclareSIUnit\nF{\nano\farad}
-%\DeclareSIUnit\uF{\micro\farad}
-%\DeclareSIUnit\mF{\milli\farad}
-%\DeclareSIUnit\fH{\femto\henry}
-%\DeclareSIUnit\pH{\pico\henry}
-%\DeclareSIUnit\nH{\nano\henry}
-%\DeclareSIUnit\uH{\micro\henry}
-%\DeclareSIUnit\mH{\milli\henry}
-
+% Non-Standard SI Unit Macros
+\DeclareSIUnit\Molar{\textsc{m}}
+\DeclareSIUnit\nF{\nano\farad}
+\DeclareSIUnit\uF{\micro\farad}
+\DeclareSIUnit\mF{\milli\farad}
+\DeclareSIUnit\fH{\femto\henry}
+\DeclareSIUnit\pH{\pico\henry}
+\DeclareSIUnit\nH{\nano\henry}
+\DeclareSIUnit\uH{\micro\henry}
+\DeclareSIUnit\mH{\milli\henry}
 
 % [Titleing]
 \RequirePackage{titling}
@@ -187,28 +214,6 @@
 
 %% Methods
 % https://en.wikibooks.org/wiki/LaTeX/Macros
-% Update Page Layout Using Fancyhdr
-\newcommand{\UpdateHeaddings}{
-	% Place Page Number in Center Header
-	\chead{-\ \thepage\ -}
-
-	% Place Course Number in Left Header
-	\ifx \@HeaderLeft \@empty
-		\lhead{}
-	\else
-		\lhead{\@HeaderLeft}
-	\fi
-
-	% Place Semester Designation in Right Header
-	\ifx \@HeaderRight \@empty
-		\rhead{}
-	\else
-		\rhead{\@HeaderRight}
-	\fi
-	
-	% Clear Out Footer
-	\lfoot{}\cfoot{}\rfoot{}
-}
 
 % Update Title Command
 \renewcommand{\@maketitle}{
