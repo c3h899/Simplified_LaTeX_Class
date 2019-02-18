@@ -50,12 +50,14 @@
 \RequirePackage[svgnames,table,hyperref]{xcolor}
 \RequirePackage{graphicx} % Graphics Support
 \RequirePackage{epstopdf}
+\epstopdfsetup{outdir=./} % Ensure converted figures can be found.
 \DeclareGraphicsExtensions{.eps,.pdf,.jpeg,.png}
 \RequirePackage{tikz} % Kitchen Sink
 \RequirePackage{pdfpages} % Appendicies
 \RequirePackage{oplotsymbl} % Provides Plotting Symbols
 
 % Map Unicode Representation of Origin Plotting Symbols
+% These symbols are defined by the package oplotsymbl
 \DeclareUnicodeCharacter{2014}{\dash}
 \DeclareUnicodeCharacter{25B2}{\trianglepafill}
 \DeclareUnicodeCharacter{25BC}{\trianglepbfill}
