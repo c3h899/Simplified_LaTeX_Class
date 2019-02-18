@@ -5,6 +5,13 @@
 \newcommand{\HeaderLeft}[1]{\def \@HeaderLeft {#1}}
 \newcommand{\HeaderRight}[1]{\def \@HeaderRight {#1}}
 
+% Verbose Reference Macros
+% See https://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing for additional recommendations
+\newcommand{\Table}[1]{Table~\ref{{#1}}} % Reference a Table
+\newcommand{\Figure}[1]{Figure~\ref{{#1}}} % Reference a Figure
+\newcommand{\Listing}[1]{Listing~\ref{{#1}}} % Reference a Listing
+\newcommand{\Equation}[1]{Equation~\ref{{#1}}} % Reference an Equation
+
 % Class Arguments
 \ProvidesClass{StdTemplate}
 
