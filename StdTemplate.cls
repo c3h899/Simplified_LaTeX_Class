@@ -95,7 +95,7 @@
 \newcommand{\Subsubsection}[1]{Subsubsection~\ref{subsubsec:#1}} % Subsubsection Reference, Prepends subsubsec:
 \newcommand{\Subparagraph}[1]{Subparagraph~\ref{subpar:#1}} % Subparagraph Reference, Prepends subpar:
 
-# [Footnotes]
+% [Footnotes]
 \RequirePackage[
 	bottom, % Force Footnotes to bottom of page
 	flushmargin, % Flush alignment of footnotes
@@ -139,6 +139,7 @@
 \RequirePackage{array}
 \RequirePackage[cmex10]{amsmath} % AMS Math, IEEE Xplore Compliance
 \RequirePackage{amssymb} % AMS Symbols, IEEE Xplore Compliance
+\interdisplaylinepenalty=2500
 
 % [SI Numbers and Units]
 \RequirePackage{siunitx}
