@@ -5,29 +5,10 @@
 \newcommand{\HeaderLeft}[1]{\def \@HeaderLeft {#1}}
 \newcommand{\HeaderRight}[1]{\def \@HeaderRight {#1}}
 
-% Verbose Reference Macros
-% See https://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing for additional recommendations
-% Common Environments
-\newcommand{\Algorithm}[1]{Algorithm~\ref{alg:#1}} % Algorithm Reference, Prepends alg:
-\newcommand{\Equation}[1]{Equation~\ref{eq:#1}} % Equation Reference, Prepends eq:
-\newcommand{\Figure}[1]{Figure~\ref{fig:#1}} % Figure Reference, Prepends fig:
-\newcommand{\Listing}[1]{Listing~\ref{lst:#1}} % Listing Reference, Prepends lst:
-\newcommand{\Table}[1]{Table~\ref{tab:#1}} % Table Reference, Prepends tab:
-% Text Sections
-\newcommand{\Appendix}[1]{Appendix~\ref{app:#1}} % Appendix Subsection Reference, Prepends app:
-\newcommand{\Chapter}[1]{Chapter~\ref{ch:#1}} % Chapter Reference, Prepends ch:
-\newcommand{\Paragraph}[1]{Paragraph~\ref{par:#1}} % Paragraph Reference, Prepends par:
-\newcommand{\Part}[1]{Part~\ref{part:#1}} % Part Reference, Prepends part:
-\newcommand{\Section}[1]{Section~\ref{sec:#1}} % Section Reference, Prepends sec:
-\newcommand{\Subsection}[1]{Subsection~\ref{subsec:#1}} % Subsection Reference, Prepends subsec:
-\newcommand{\Subsubsection}[1]{Subsubsection~\ref{subsubsec:#1}} % Subsubsection Reference, Prepends subsubsec:
-\newcommand{\Subparagraph}[1]{Subparagraph~\ref{subpar:#1}} % Subparagraph Reference, Prepends subpar:
-
 % Class Arguments
 \ProvidesClass{StdTemplate}
 
 % Dependencies
-%\NeedsTeXFormat{LaTeX2e}
 
 % Derived from "article" class
 \LoadClass[12pt]{article}
@@ -94,6 +75,34 @@
 	\floatsetup[figure]{capposition=bottom, objectset=centering}
 	\floatsetup[table]{capposition=top, objectset=centering}
 	\floatsetup[listing]{capposition=top, objectset=centering}
+% Verbose Reference Macros
+% See https://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing for additional recommendations
+% Common Environments
+\newcommand{\Algorithm}[1]{Algorithm~\ref{alg:#1}} % Algorithm Reference, Prepends alg:
+\newcommand{\Equation}[1]{Equation~\ref{eq:#1}} % Equation Reference, Prepends eq:
+%\newcommand{\Equation}[1]{(\ref{eq:#1})} % IEEE Equation Reference, Prepends eq:
+\newcommand{\Figure}[1]{Figure~\ref{fig:#1}} % Figure Reference, Prepends fig:
+%\newcommand{\Figure}[1]{\figurename~\ref{fig:#1}} % IEEE Figure Reference, Prepends fig:
+\newcommand{\Listing}[1]{Listing~\ref{lst:#1}} % Listing Reference, Prepends lst:
+\newcommand{\Table}[1]{Table~\ref{tab:#1}} % Table Reference, Prepends tab:
+% Text Sections
+\newcommand{\Appendix}[1]{Appendix~\ref{app:#1}} % Appendix Subsection Reference, Prepends app:
+\newcommand{\Chapter}[1]{Chapter~\ref{ch:#1}} % Chapter Reference, Prepends ch:
+\newcommand{\Paragraph}[1]{Paragraph~\ref{par:#1}} % Paragraph Reference, Prepends par:
+\newcommand{\Part}[1]{Part~\ref{part:#1}} % Part Reference, Prepends part:
+\newcommand{\Section}[1]{Section~\ref{sec:#1}} % Section Reference, Prepends sec:
+\newcommand{\Subsection}[1]{Subsection~\ref{subsec:#1}} % Subsection Reference, Prepends subsec:
+\newcommand{\Subsubsection}[1]{Subsubsection~\ref{subsubsec:#1}} % Subsubsection Reference, Prepends subsubsec:
+\newcommand{\Subparagraph}[1]{Subparagraph~\ref{subpar:#1}} % Subparagraph Reference, Prepends subpar:
+
+# [Footnotes]
+\RequirePackage[
+	bottom, % Force Footnotes to bottom of page
+	flushmargin, % Flush alignment of footnotes
+	multiple]{footmisc} % Correct multiple footnotes to be comma delimited.
+\def\blfootnote{\gdef\@thefnmark{}\@footnotetext} % Blind Footnote
+\newcommand{\thank}[1]{\blfootnote{#1}} % Replace \thank with blind footnote
+
 
 % [Header and Footer] Format
 % http://mirror.hmc.edu/ctan/macros/latex/contrib/fancyhdr/fancyhdr.pdf
@@ -113,9 +122,9 @@
 
 	% Blank Footer
 	\fancyfoot[L,C,R]{}
-	
 % [Hyperlinks]
 \RequirePackage[colorlinks = true, % Change to false is color hyperlinks are un-desired.
+	hyperfootnotes = false, % Recommended for compatibility with {footmisc}
 	linkcolor = blue,
 	urlcolor  = blue,
 	citecolor = blue,
@@ -234,7 +243,6 @@
 
 %% Methods
 % https://en.wikibooks.org/wiki/LaTeX/Macros
-
 % Update Title Command
 \renewcommand{\@maketitle}{
 \newpage
