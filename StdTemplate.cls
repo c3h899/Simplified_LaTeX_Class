@@ -16,7 +16,6 @@
 
 % Page Encoding
 \RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
 
 %% Required Packages
 
