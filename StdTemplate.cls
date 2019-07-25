@@ -139,6 +139,7 @@
 \RequirePackage[cmex10]{amsmath} % AMS Math, IEEE Xplore Compliance
 \RequirePackage{amssymb} % AMS Symbols, IEEE Xplore Compliance
 \interdisplaylinepenalty=2500
+\RequirePackage{diffcoeff} % Provided useful macros for typesetting derivatives
 
 % [SI Numbers and Units]
 \RequirePackage{siunitx}
@@ -259,3 +260,8 @@
 
 % Custom Abstract
 \renewcommand\abstractname{Abstract}
+
+% Mathematics
+\newcommand{\Parenth}[1]{\left( {#1} \right)} % Provides Convenient Parenthetic Grouping
+\newcommand{\Bracket}[1]{\left[ {#1} \right]} % Provides Convenient Bracketed Grouping
+\newcommand{\Brace}[1]{\left\{ {#1} \right\}} % Provides Convenient Braced Grouping
